@@ -16,7 +16,7 @@ function App() {
   if(pokemon){
     return (
       <div className="App">
-        {pokemon.height}
+        {pokemon.name}
       </div>
     );
   }
