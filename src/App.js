@@ -6,15 +6,11 @@ function App() {
   const apiurl = 'https://pokeapi.co/api/v2/pokemon/ditto';
   const [pokemon, setPokemon] = useState(null);
   const [usertext, setUsertext] = useState('');
-  const [normal, setNormal] = useState('tepig');
 
   const getInputValue = (e)=>{
     e.preventDefault();
     console.log("user1:"+usertext)
-    setNormal(usertext);
-    console.log("normal:"+normal)
-    console.log("user2:"+usertext)
-    axios.get("https://pokeapi.co/api/v2/pokemon/"+normal)
+    axios.get("https://pokeapi.co/api/v2/pokemon/"+usertext)
       .then(response => {
         setPokemon(response.data);
     })
@@ -24,7 +20,7 @@ function App() {
     const userValue = e.target.value;
     setUsertext(userValue);
   }
-  
+
   useEffect(() => {
     axios.get(apiurl)
       .then(response => {
@@ -43,7 +39,9 @@ function App() {
             children="Submit"
           />
         </form>
-        <p>{pokemon.name}</p>
+        <p>Name: {pokemon.name}</p>
+        <p>Height: {pokemon.height} decimeters</p>
+        <p>Weight: {pokemon.weight} hectograms</p>
       </div>
     );
   }
